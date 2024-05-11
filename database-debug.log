@@ -1,0 +1,8 @@
+03:13:54.227 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+03:13:54.312 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+03:13:57.724 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - klorah-c4dc2-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 61ms, init: 0ms
+03:13:57.755 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace klorah-c4dc2-default-rtdb status Active to Active
+03:17:25.782 [Thread-0] INFO com.firebase.server.forge.App$ - Attempting graceful shutdown.
+03:17:25.801 [NamespaceSystem-akka.actor.default-dispatcher-9] INFO com.firebase.core.namespace.Terminator$Terminator - 1 actors left to terminate: klorah-c4dc2-default-rtdb
+03:17:25.806 [NamespaceSystem-akka.actor.default-dispatcher-9] INFO com.firebase.core.namespace.NamespaceActor - stopped namespace actor for klorah-c4dc2-default-rtdb
+03:17:25.809 [Thread-0] INFO com.firebase.server.forge.App$ - Graceful shutdown complete.
