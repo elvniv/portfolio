@@ -10,8 +10,8 @@ const SearchPage = () => {
 
   return (
     <div className={`h-screen flex flex-col items-center justify-center bg-${darkMode ? 'black' : 'white'} text-${darkMode ? 'white' : 'black'}`}>
-      <h1 className="text-4xl mb-6">Using AI to find your next project hire online</h1>
-      <p className="text-lg mb-10">Search for the best candidates accross the web available for your project...then hire them!</p>
+      <h1 className="text-4xl mb-6 font-bold">Find the perfect candidate for your project with AI</h1>
+      <p className="text-lg mb-10 ">Discover and hire the best candidates available across the web for your project.</p>
       <div className="relative w-4/5 max-w-lg">
         <input 
           type="text"
