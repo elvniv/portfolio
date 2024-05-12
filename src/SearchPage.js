@@ -28,14 +28,12 @@ const SearchPage = () => {
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
-
   const suggestions = [
-    { label: 'A designer for my website', emoji: '🎨' },
-    { label: 'A developer for my app', emoji: '💻' },
-    { label: 'A marketing expert', emoji: '📈' },
-    { label: 'A content writer', emoji: '✍️' }
+    { label: 'A designer for my website - Need a creative designer to revamp my website', emoji: '🎨' },
+    { label: 'A developer for my app - Looking for a skilled developer to build my mobile app', emoji: '💻' },
+    { label: 'A marketing expert - Seeking a marketing guru to promote my business', emoji: '📈' },
+    { label: 'A content writer - In need of a talented writer to create engaging content', emoji: '✍️' }
   ];
-
   const handleSuggestionClick = suggestion => {
     setSearchQuery(suggestion.label); // Update search query with the suggestion label
     setShowResults(true); // Display results after selecting a suggestion
@@ -83,14 +81,15 @@ const SearchPage = () => {
       <div className={`h-screen flex flex-col items-center justify-center bg-${darkMode ? 'black' : 'white'} text-${darkMode ? 'white' : 'black'} relative star-field`}>
         <h1 className="text-2xl md:text-4xl mb-4 md:mb-6 font-bold text-center">Find the perfect candidate for your project with AI</h1>
         <p className="text-base md:text-lg mb-6 md:mb-10 text-center">Discover and hire the best candidates available across the web for your project.</p>
-        <div className="flex items-center justify-between w-3/5 max-w-md p-4">
-          <input 
+        <div className="flex items-center justify-center p-4 w-full">
+        <input 
             type="text"
-            placeholder="What are ya lookin for?... "
+            placeholder="Describe your project and the candidates you are looking for in detail..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className={`w-full p-3 border-2 border-gray-300 focus:border-black placeholder-gray-500 text-lg rounded-lg ${darkMode ? 'text-white' : 'text-black'} bg-${darkMode ? 'black' : 'white'}`}
-          />
+            className={`w-full p-3 border-2 border-gray-300 focus:border-black placeholder-gray-500 text-xl rounded-lg ${darkMode ? 'text-white' : 'text-black'} bg-${darkMode ? 'black' : 'white'}`}
+            style={{ maxWidth: '800px' }} // Increased max-width
+        />
         </div>
         <div className="grid grid-cols-2 gap-2 my-2">
           {suggestions.map((item, index) => (
