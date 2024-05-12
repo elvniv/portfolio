@@ -6,19 +6,21 @@ const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    const stars = 100; // Number of stars you want in the background
+    const stars = 50; // Reduced number of stars to 50
     const starField = document.querySelector('.star-field');
+    const existingStars = document.querySelectorAll('.star');
+    existingStars.forEach(star => star.remove()); // Remove existing stars before adding new ones
 
     for (let i = 0; i < stars; i++) {
       let star = document.createElement('div');
       star.className = 'star';
       star.style.left = `${Math.floor(Math.random() * 100)}vw`;
       star.style.top = `${Math.floor(Math.random() * 100)}vh`;
-      star.style.animationDuration = `${Math.random() * 3 + 2}s`;
-      star.style.backgroundColor = darkMode ? 'white' : 'black'; // Change star color based on darkMode
+      star.style.animationDuration = `${Math.random() * 6 + 4}s`; // Slower animation speeds
+      star.style.backgroundColor = darkMode ? 'white' : 'black'; // Star color changes based on dark mode
       starField.appendChild(star);
     }
-  }, [darkMode]); // Add darkMode as a dependency for useEffect
+  }, [darkMode]); // Effect runs when darkMode changes
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -32,7 +34,7 @@ const SearchPage = () => {
   ];
 
   const handleSuggestionClick = suggestion => {
-    setSearchQuery(suggestion.label);
+    setSearchQuery(suggestion.label); // Update search query with the suggestion label
   };
 
   const handleFindCandidate = () => {
@@ -87,7 +89,7 @@ const SearchPage = () => {
         </div>
         <div className="grid grid-cols-2 gap-2 my-2">
           {suggestions.map((item, index) => (
-            <div key={index} className={`p-2 text-lg bg-gray-200 rounded-lg shadow ${darkMode ? 'text-black' : ''}`} onClick={() => handleSuggestionClick(item.label)}>
+            <div key={index} className={`p-2 text-lg bg-gray-200 rounded-lg shadow cursor-pointer ${darkMode ? 'text-black' : ''}`} onClick={() => handleSuggestionClick(item)}>
               {item.emoji} {item.label}
             </div>
           ))}
@@ -112,4 +114,3 @@ const SearchPage = () => {
 };
 
 export default SearchPage;
-
