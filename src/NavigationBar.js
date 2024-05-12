@@ -89,7 +89,7 @@ const NavigationBar = ({ darkMode }) => {
                     className="h-8 w-auto"
                     src="/klorahLogo.png"
                     alt="Klorah"
-                    onClick={() => navigate('/dashboard')}
+                    onClick={() => navigate('/')}
                   />
                 </div>
               </div>
