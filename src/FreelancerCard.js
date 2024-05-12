@@ -8,7 +8,7 @@ const FreelancerCard = ({ darkMode }) => {
   };
 
   return (
-    <div className={`freelancer-card bg-${darkMode ? 'gray-800' : 'white'} p-4 rounded-lg shadow-lg my-4`} style={{ backgroundColor: darkMode ? 'black' : 'white', color: darkMode ? 'white' : 'black', border: darkMode ? '.5px solid white' : '.5px solid black' }}>
+    <div className={`freelancer-card bg-${darkMode ? 'gray-800' : 'white'} p-4 rounded-lg shadow-lg my-4`} style={{ backgroundColor: darkMode ? 'black' : 'white', color: darkMode ? 'white' : 'black'}}>
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-2xl font-bold mb-2" style={{ color: darkMode ? 'white' : 'black' }}>{freelancer.name}</h2>
         <p className="text-gray-600" style={{ color: darkMode ? 'white' : 'black' }}>{freelancer.profession}</p>
