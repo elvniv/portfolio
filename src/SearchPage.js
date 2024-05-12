@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Switch } from '@headlessui/react';
+import FreelancerCard from './FreelancerCard';
 
 const SearchPage = () => {
   const [darkMode, setDarkMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showResults, setShowResults] = useState(false); // State to control visibility of search results
 
   useEffect(() => {
     const stars = 50; // Reduced number of stars to 50
@@ -35,11 +37,12 @@ const SearchPage = () => {
 
   const handleSuggestionClick = suggestion => {
     setSearchQuery(suggestion.label); // Update search query with the suggestion label
+    setShowResults(true); // Display results after selecting a suggestion
   };
 
   const handleFindCandidate = () => {
     alert(`Searching for: ${searchQuery}`);
-    // Implement search functionality or redirect as necessary
+    setShowResults(true); // Optionally show results when searching
   };
 
   return (
@@ -95,6 +98,7 @@ const SearchPage = () => {
           ))}
         </div>
         <button className={`mt-2 p-3 rounded-lg hover:bg-green-500 ${darkMode ? 'bg-gray-800 text-white' : 'bg-black text-white'}`} onClick={handleFindCandidate}>Find Candidate 🚀</button>
+        {showResults && <FreelancerCard />}
         <div className="fixed bottom-8 left-8">
           <Switch
             checked={darkMode}
