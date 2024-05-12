@@ -28,3 +28,4 @@ const FreelancerCard = ({ darkMode }) => {
 };
 
 export default FreelancerCard;
+

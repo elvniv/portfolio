@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Switch } from '@headlessui/react';
 import FreelancerCard from './FreelancerCard';
+import NavigationBar from './NavigationBar';
 
 const SearchPage = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -78,6 +79,7 @@ const SearchPage = () => {
           }
         `}
       </style>
+      <NavigationBar />
       <div className={`h-screen flex flex-col items-center justify-center bg-${darkMode ? 'black' : 'white'} text-${darkMode ? 'white' : 'black'} relative star-field`}>
         <h1 className="text-2xl md:text-4xl mb-4 md:mb-6 font-bold text-center">Find the perfect candidate for your project with AI</h1>
         <p className="text-base md:text-lg mb-6 md:mb-10 text-center">Discover and hire the best candidates available across the web for your project.</p>

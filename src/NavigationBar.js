@@ -3,10 +3,9 @@ import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'; // Correct for v2
 import { PlusIcon } from '@heroicons/react/24/solid'; // Correct for v2
 import { useNavigate } from 'react-router-dom';
-import { View, Text, TouchableOpacity, Alert, StyleSheet, Modal, Animated } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faFileInvoice, faMagic } from '@fortawesome/free-solid-svg-icons';
-
+import { faFileInvoice, faMagic, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { View, Text, TouchableOpacity, Alert, StyleSheet, Modal, Animated } from 'react-native';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -14,6 +13,7 @@ function classNames(...classes) {
 
 const CreateMenu = ({ isPro }) => {
   const navigate = useNavigate();
+  const [submitted, setSubmitted] = useState(false);
 
   const navigateToCreateInvoice = () => {
     navigate('/create-invoice');
@@ -23,31 +23,40 @@ const CreateMenu = ({ isPro }) => {
     if (isPro) {
       navigate('CreateContract');
     } else {
-      // this is repetitive but i am leaving it just so i can have room for tier enforcements late for other create options
       navigate('/create-agreement');
     }
   };
 
+  const handleEmailSubmit = (email) => {
+    // Call loops API to add the user to the group 'cornerUserUpdates'
+    fetch('https://api.loops.com/addUserToGroup', {
+      method: 'POST',
+      body: JSON.stringify({ email: email, group: 'cornerUserUpdates' }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      setSubmitted(true); // Set submitted to true after successful API call
+    })
+    .catch(error => console.error(error));
+  };
+
+  const handleBackdropClick = (e) => {
+    if (e.target.classList.contains('fixed')) {
+      setSubmitted(false); // Close the menu when clicking outside the modal
+    }
+  };
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"> {/* Backdrop */}
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center" onClick={handleBackdropClick}> {/* Backdrop */}
       <div className="bg-white rounded-lg p-6 w-3/4 md:w-1/2 lg:w-1/3 shadow-lg flex flex-col items-center"> {/* Modal container */}
-        <h2 className="text-lg font-semibold mb-4">Create</h2>
-        <div className="flex justify-center space-x-4">
-          <button 
-            className="group flex flex-col items-center p-6 border border-transparent shadow-sm text-base font-medium rounded-xl text-black bg-gray-100 hover:bg-black justify-center"
-            onClick={navigateToCreateInvoice}
-          >
-            <FontAwesomeIcon icon={faFileInvoice} size={20} className="text-white group-hover:text-white" /> 
-            <span className="group-hover:text-white">Create Invoice</span>
-          </button>
-          <button 
-            className="group flex flex-col items-center p-6 border border-transparent shadow-sm text-base font-medium rounded-xl text-black bg-gray-100 hover:bg-black justify-center"
-            onClick={navigateToCreateContract}
-          >
-            <FontAwesomeIcon icon={faMagic} size={20} className="text-black group-hover:text-white" /> 
-            <span className="group-hover:text-white">AI Agreement</span>
-          </button>
-        </div>
+        <h2 className="text-lg font-semibold mb-4 text-center text-black">This feature is coming soon. Sign up for more updates!</h2>
+        <input type="email" placeholder="Enter your email" className="w-full p-2 border border-black rounded-lg mb-4" />
+        <button onClick={() => handleEmailSubmit('user@example.com')} className="bg-black text-white rounded-lg px-4 py-2 hover:bg-white hover:text-black">Sign Up</button>
+        {submitted && <FontAwesomeIcon icon={faCheck} color="green" size={24} />} {/* Display check icon when email is submitted */}
       </div>
     </div>
   );
@@ -163,11 +172,11 @@ const NavigationBar = () => {
                     onClick={() => navigate('/dashboard')}
                   />
                 </div>
-                <div className="hidden md:ml-6 md:flex md:space-x-8">
+                {/* <div className="hidden md:ml-6 md:flex md:space-x-8">
                   <a onClick={() => navigate('/crm-dashboard')} className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-black hover:border-black hover:text-black">Tasks</a>
                   <a onClick={() => navigate('/wallet')} className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-black hover:border-black hover:text-black">Wallet</a>
                   <a onClick={() => navigate('/profile')} className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-black hover:border-black hover:text-black">Profile</a>
-                </div>
+                </div> */}
               </div>
               <div className="flex items-center">
                 <div className="flex-shrink-0">
@@ -178,7 +187,7 @@ const NavigationBar = () => {
                     onClick={() => setModalVisible(true)}
                   >
                     <PlusIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
-                    Create
+                    Create A Project
                   </button>
                 </div>
               </div>
