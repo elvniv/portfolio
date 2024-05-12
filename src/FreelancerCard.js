@@ -8,7 +8,7 @@ const FreelancerCard = ({ darkMode }) => {
   };
 
   return (
-    <div className={`freelancer-card bg-${darkMode ? 'gray-800' : 'white'} p-4 rounded-lg shadow-lg my-4`} style={{ backgroundColor: darkMode ? 'black' : 'white', color: darkMode ? 'white' : 'black', border: darkMode ? '2px solid white' : '2px solid black' }}>
+    <div className={`freelancer-card bg-${darkMode ? 'gray-800' : 'white'} p-4 rounded-lg shadow-lg my-4`} style={{ backgroundColor: darkMode ? 'black' : 'white', color: darkMode ? 'white' : 'black', border: darkMode ? '.5px solid white' : '.5px solid black' }}>
       <div className="flex flex-col items-center justify-center">
         <h2 className="text-2xl font-bold mb-2" style={{ color: darkMode ? 'white' : 'black' }}>{freelancer.name}</h2>
         <p className="text-gray-600" style={{ color: darkMode ? 'white' : 'black' }}>{freelancer.profession}</p>
@@ -18,9 +18,11 @@ const FreelancerCard = ({ darkMode }) => {
           <span key={index} className={`text-${darkMode ? 'white' : 'black'} text-2xl`}>⭐</span>
         ))}
       </div>
-      <button className={`mt-4 py-2 px-6 bg-${darkMode ? 'white' : 'black'} text-${darkMode ? 'black' : 'white'} rounded hover:bg-${darkMode ? 'black' : 'white'} flex items-center justify-center`} style={{ backgroundColor: darkMode ? 'white' : 'black', color: darkMode ? 'black' : 'white' }}>
-        📞 <span className="ml-2">Contact</span>
-      </button>
+      <div className="flex items-center justify-center mt-4">
+        <button className={`py-2 px-6 bg-${darkMode ? 'white' : 'black'} text-${darkMode ? 'black' : 'white'} rounded hover:bg-${darkMode ? 'black' : 'white'} flex items-center justify-center`} style={{ backgroundColor: darkMode ? 'white' : 'black', color: darkMode ? 'black' : 'white' }}>
+          <span className="ml-2">Contact</span>
+        </button>
+      </div>
     </div>
   );
 };
