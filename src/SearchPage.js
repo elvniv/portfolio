@@ -111,6 +111,7 @@ const SearchPage = () => {
             </span>
           </Switch>
         </div>
+        <div className="experiment-tag" style={{ position: 'fixed', bottom: '8px', right: '8px' }}>Experiment</div>
         <a href="https://klorah.com" target="_blank" rel="noopener noreferrer" className="fixed bottom-8 right-8 text-sm rounded-lg p-2 hover:bg-gray-200">Powered by Klorah</a>
       </div>
     </>
