@@ -11,7 +11,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-const CreateMenu = ({ isPro }) => {
+const CreateMenu = ({ isPro, darkMode }) => {
   const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
 
@@ -51,11 +51,11 @@ const CreateMenu = ({ isPro }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center" onClick={handleBackdropClick}> {/* Backdrop */}
+    <div className={`fixed inset-0 bg-${darkMode ? 'black' : 'white'} bg-opacity-50 flex justify-center items-center`} onClick={handleBackdropClick}> {/* Backdrop */}
       <div className="bg-white rounded-lg p-6 w-3/4 md:w-1/2 lg:w-1/3 shadow-lg flex flex-col items-center"> {/* Modal container */}
         <h2 className="text-lg font-semibold mb-4 text-center text-black">This feature is coming soon. Sign up for more updates!</h2>
         <input type="email" placeholder="Enter your email" className="w-full p-2 border border-black rounded-lg mb-4" />
-        <button onClick={() => handleEmailSubmit('user@example.com')} className="bg-black text-white rounded-lg px-4 py-2 hover:bg-white hover:text-black">Sign Up</button>
+        <button onClick={() => handleEmailSubmit('user@example.com')} className={`bg-${darkMode ? 'black' : 'white'} text-${darkMode ? 'white' : 'black'} rounded-lg px-4 py-2 hover:bg-${darkMode ? 'white' : 'black'} hover:text-${darkMode ? 'black' : 'white'}`}>Sign Up</button>
         {submitted && <FontAwesomeIcon icon={faCheck} color="green" size={24} />} {/* Display check icon when email is submitted */}
       </div>
     </div>
@@ -63,92 +63,12 @@ const CreateMenu = ({ isPro }) => {
 };
 
 
-const styles = StyleSheet.create({
-  createMenuContent: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    padding: 20,
-    height: '100%',
-    width: '100%',
-  },
-  titleSection: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  titleText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#FAF7F6',
-  },
-  rectangle: {
-    width: 134,
-    height: 4,
-    borderRadius: 7,
-    backgroundColor: '#fff',
-    marginTop: 8,
-  },
-  mainSection: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: 346,
-    marginTop: 20,
-  },
-  button: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 5,
-    padding: 10,
-    borderRadius: 19,
-    backgroundColor: '#ddd',
-    marginHorizontal: 5,
-  },
-  buttonText: {
-    fontSize: 20,
-    fontWeight: '500',
-    color: '#000',
-    width: 110,
-    textAlign: 'center',
-  },
-  dimmedScreen: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.9)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 10,
-  },
-  createMenu: {
-    width: '100%', 
-    position: 'absolute', 
-    bottom: 0, 
-    flexDirection: 'column',
-    alignItems: 'center',
-    borderRadius: 18,
-    backgroundColor: '#FAF7F6',
-    zIndex: 11,
-    padding: 19,
-    paddingTop: 10,
-    paddingLeft: 22,
-    paddingRight: 22,
-    paddingBottom: 10,
-  },
-});
-
-
-const NavigationBar = () => {
+const NavigationBar = ({ darkMode }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const navigate = useNavigate();
 
   return (
-    <Disclosure as="nav" className="bg-FAF7F6 ">
+    <Disclosure as="nav" className={`bg-${darkMode ? 'black' : 'FAF7F6'}`}>
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -172,23 +92,17 @@ const NavigationBar = () => {
                     onClick={() => navigate('/dashboard')}
                   />
                 </div>
-                {/* <div className="hidden md:ml-6 md:flex md:space-x-8">
-                  <a onClick={() => navigate('/crm-dashboard')} className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-black hover:border-black hover:text-black">Tasks</a>
-                  <a onClick={() => navigate('/wallet')} className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-black hover:border-black hover:text-black">Wallet</a>
-                  <a onClick={() => navigate('/profile')} className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-black hover:border-black hover:text-black">Profile</a>
-                </div> */}
               </div>
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <button
-                    type="button"
-                    className="relative inline-flex items-center gap-x-1.5 rounded-md bg-black px-3 py-2 text-sm font-semibold shadow-sm hover:bg-black focus:visible:outline focus:visible:outline-2 focus:visible:outline-black"
-                    style={{ color: '#FAF7F6' }}
-                    onClick={() => setModalVisible(true)}
-                  >
-                    <PlusIcon className="-ml-0.5 h-5 w-5" aria-hidden="true" />
-                    Create A Project
-                  </button>
+                <button
+                  type="button"
+                  className={`inline-flex items-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold shadow-sm hover:bg-${darkMode ? 'white' : 'gray-700'} focus:outline-none`}
+                  style={{ backgroundColor: darkMode ? 'white' : 'black', color: darkMode ? 'black' : 'white' }}
+                  onClick={() => setModalVisible(true)}
+                >
+                  <PlusIcon className="h-5 w-5" aria-hidden="true" style={{ color: darkMode ? 'black' : 'white' }} /> Create A Project
+                </button>
                 </div>
               </div>
             </div>
@@ -209,10 +123,10 @@ const NavigationBar = () => {
             }}
           >
             <div
-              style={styles.createMenuContent}
+              style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)' }}
               onClick={() => setModalVisible(false)}
             >
-              <CreateMenu />
+              <CreateMenu darkMode={darkMode} />
             </div>
           </Modal>
         </>
