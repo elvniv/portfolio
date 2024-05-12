@@ -64,41 +64,27 @@ const SearchPage = () => {
     setDarkMode(!darkMode);
   };
 
+  useEffect(() => {
+    const stars = 50; // Reduced number of stars to 50
+    const starField = document.querySelector('.star-field');
+    const existingStars = document.querySelectorAll('.star');
+    existingStars.forEach(star => star.remove()); // Remove existing stars before adding new ones
+
+    for (let i = 0; i < stars; i++) {
+      let star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = `${Math.floor(Math.random() * 100)}vw`;
+      star.style.top = `${Math.floor(Math.random() * 100)}vh`;
+      star.style.animationDuration = `${Math.random() * 6 + 4}s`; // Slower animation speeds
+      star.style.backgroundColor = darkMode ? 'white' : 'black'; // Star color changes based on dark mode
+      starField.appendChild(star);
+    }
+  }, [darkMode]);
+
   return (
     <>
-      <style>
-        {`
-          .star-field {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-          }
-
-          .star {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: white;
-            box-shadow: 0 0 6px white;
-            border-radius: 50%;
-            animation-name: float;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-          }
-
-          @keyframes float {
-            0% {
-              transform: translateY(0px);
-            }
-            100% {
-              transform: translateY(-100vh);
-            }
-          }
-        `}
-      </style>
       <NavigationBar darkMode={darkMode} />
-      <div className={`h-screen flex flex-col items-center justify-center bg-${darkMode ? 'black' : 'white'} text-${darkMode ? 'white' : 'black'} relative star-field`}>
+      <div className={`h-screen flex flex-col items-center justify-center bg-${darkMode ? 'black' : 'white'} text-${darkMode ? 'white' : 'black'} relative star-field`} style={{ position: 'relative', overflow: 'hidden' }}>
         <h1 className="text-2xl md:text-4xl mb-4 md:mb-6 font-bold text-center">
           {typedHeading}
         </h1>
@@ -124,7 +110,7 @@ const SearchPage = () => {
         </div>
         <button className={`mt-2 p-3 rounded-lg hover:bg-green-500 ${darkMode ? 'bg-gray-800 text-white' : 'bg-black text-white'}`} onClick={handleFindCandidate}>Find Candidate 🚀</button>
         {showResults && <FreelancerCard darkMode={darkMode} />}
-        <div className="fixed bottom-8 left-8">
+        <div className="fixed bottom-8 left-8 star-field">
           <Switch
             checked={darkMode}
             onChange={toggleDarkMode}
