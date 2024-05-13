@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Switch } from '@headlessui/react';
 import FreelancerCard from './FreelancerCard';
 import NavigationBar from './NavigationBar';
+import SignInModal from './SignInModal';
 
 const SearchPage = () => {
   const [darkMode, setDarkMode] = useState(false);
@@ -109,7 +110,7 @@ const SearchPage = () => {
           ))}
         </div>
         <button className={`mt-2 p-3 rounded-lg hover:bg-green-500 ${darkMode ? 'bg-gray-800 text-white' : 'bg-black text-white'}`} onClick={handleFindCandidate}>Find Candidate 🚀</button>
-        {showResults && <FreelancerCard darkMode={darkMode} />}
+        {showResults && <SignInModal />}
         <div className="fixed bottom-8 left-8 star-field">
           <Switch
             checked={darkMode}

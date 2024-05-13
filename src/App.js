@@ -53,65 +53,11 @@ export default function App() {
       <Router>
         <OnboardingProvider>
         <Analytics />
-        <AutoLogin />
+        {/* <AutoLogin /> */}
         <Routes>
           {/* authenitcation */}
           <Route path="/" element={<SearchPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/auth/forgot-password" element={<ForgotPasword />} />
-          <Route path="/contact-us" element={<ContactUs />} />
 
-          {/* in app main routes */}
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/invoices" element={<InvoicesList />} />
-          <Route path="/clients" element={<ClientDashboard /> } />
-          <Route path="/wallet" element={<WalletView />} />
-          <Route path="/profile" element={<ProfileView />} />
-          <Route path="/profile/:username" element={<ProfileView />} />
-
-
-          {/* this is how we call the stripe checkout */}
-          {/* <Route path="/billing" element={<Billing />} />
-          <Route path="/membership-billing" element={<MembershipBilling />} /> */}
-          <Route path="/onboarding-questions" element={<OnboardingQuestions />} />
-
-
-          {/* agreement related routes */}
-          <Route path="/create-agreement" element={<CreateAgreement />} />
-          <Route path="/edit-agreement/:agreementId" element={<EditAgreement />} />
-          <Route path="/share-agreement/:agreementId" element={<ShareAgreement />} />
-          <Route path="/loading/:navigateTo" element={<LoadingPage />} />
-          <Route path="/signature/:agreementId" element={<SignaturePage />} />
-
-          {/* micalleneous routes */}
-          <Route path="/success" element={<Success />} />
-          <Route path="/cancel" element={<Cancel />} />
-          <Route path="/reauth" element={<Reauth />} />
-        
-          {/* crm routes ... to add more */}
-          <Route path="/crm-dashboard" element={<CrmDashboard />} />
-          <Route path="/create-goal" element={<CreateGoal />} />
-          <Route path="/goal/:goalId" element={<GoalDetail />} />
-          
-          {/* stripe-specific related routes  */}
-          <Route path="/stripe-ob" element={<StripeOnboarding />} />
-          <Route path="/stripe-onboarded" element={<StripeOnboarded />} />
-
-          {/* invoice routes 
-          <Route path="/create-invoice" element={<CreateInvoice />} />
-          <Route path="/invoice-details/:invoiceId" element={<Invoice />} />
-          <Route path="/preview-invoice/:invoiceId" element={<PreviewInvoice />} /> */}
-
-          {/* Invoice and Payment Routes */}
-          <Route path="/create-invoice" element={<CreateInvoice />} />
-          <Route path="/invoice-details/:invoiceId" element={<Invoice />} />
-          <Route path="/preview-invoice/:invoiceId" element={<PreviewInvoice />} />
-          <Route path="/payment/:invoiceId" element={<PaymentPage />} />
-
-          {/* leagal routes */}
-          <Route path="/tos" element={<TermsOfService />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
         </OnboardingProvider>
       </Router>
