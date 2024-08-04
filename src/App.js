@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import './index.css';
 import mixpanel from 'mixpanel-browser';
-import SearchPage from './SearchPage';
+import Portfolio from './Portfolio';
 
 
 
@@ -19,7 +19,7 @@ export default function App() {
         {/* <AutoLogin /> */}
         <Routes>
           {/* authenitcation */}
-          <Route path="/" element={<SearchPage />} />
+          <Route path="/" element={<Portfolio />} />
 
         </Routes>
       </Router>
