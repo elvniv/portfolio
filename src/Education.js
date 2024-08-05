@@ -4,7 +4,7 @@ import NavigationBar from './NavigationBar';
 const Education = ({ darkMode }) => {
   return (
     <div className={`min-h-screen ${darkMode ? 'bg-black text-white' : 'bg-white text-black'}`}>
-        <NavigationBar />
+        <NavigationBar darkMode={darkMode} />
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-4xl md:text-6xl font-bold mb-8">Education</h1>
         <div className="mb-8">

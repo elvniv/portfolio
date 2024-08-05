@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Switch } from '@headlessui/react';
 import { 
   motion, 
   useScroll, 
@@ -12,9 +11,10 @@ import {
 } from 'framer-motion';
 import { FaLinkedin, FaGithub, FaEnvelope, FaArrowDown } from 'react-icons/fa';
 import styled from 'styled-components';
-import NavigationBar from './NavigationBar'; // Make sure this path is correct
+import NavigationBar from './NavigationBar';
+import DarkModeToggle from './DarkModeToggle';
 
-// Styled components for parallax effect (unchanged)
+// Styled components for parallax effect
 const ParallaxContainer = styled.div`
   overflow: hidden;
   letter-spacing: -2px;
@@ -39,13 +39,13 @@ const ParallaxScroller = styled(motion.div)`
   }
 `;
 
-// Utility function for wrapping (unchanged)
+// Utility function for wrapping
 const wrap = (min, max, v) => {
   const rangeSize = max - min;
   return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
 };
 
-const ParallaxSection = ({ children, baseVelocity = 50 }) => {
+const ParallaxSection = ({ children, baseVelocity = 20 }) => {
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -77,14 +77,14 @@ const ParallaxSection = ({ children, baseVelocity = 50 }) => {
   );
 };
 
-const StickySection = ({ title, content }) => {
+const SectionContent = ({ title, content }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.5 });
 
   return (
     <motion.div
       ref={ref}
-      className="sticky top-0 h-screen flex items-center justify-center bg-opacity-90 backdrop-blur"
+      className="min-h-screen flex items-center justify-center"
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 1 }}
@@ -157,8 +157,15 @@ export default function Portfolio() {
 
   return (
     <div className={`${darkMode ? 'bg-black text-white' : 'bg-white text-black'} transition-colors duration-300 ease-in-out`}>
-      <NavigationBar darkMode={darkMode} />
-      <div className="min-h-screen pt-16" ref={containerRef}>
+      <motion.div 
+        style={{ position: 'sticky', top: 0, zIndex: 10 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <NavigationBar darkMode={darkMode} />
+      </motion.div>
+      <div className="pt-16" ref={containerRef}>
         <motion.header 
           className="h-screen flex flex-col items-center justify-center text-center px-4"
           style={{ scale, opacity, y }}
@@ -181,13 +188,13 @@ export default function Portfolio() {
         <ParallaxSection>Innovate • Design • Create • Lead</ParallaxSection>
 
         {sections.map((section, index) => (
-          <StickySection key={index} title={section.title} content={section.content} />
+          <SectionContent key={index} title={section.title} content={section.content} />
         ))}
 
-        <ParallaxSection baseVelocity={-50}>Entrepreneur • Visionary • Problem Solver</ParallaxSection>
+        <ParallaxSection baseVelocity={-20}>Entrepreneur • Visionary • Problem Solver</ParallaxSection>
 
         <motion.div 
-          className="h-screen flex flex-col items-center justify-center text-center px-4"
+          className="min-h-screen flex flex-col items-center justify-center text-center px-4"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -222,18 +229,8 @@ export default function Portfolio() {
           </div>
         </motion.div>
       </div>
+        <DarkModeToggle darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
 
-      <div className="fixed bottom-8 left-8 z-10">
-        <Switch
-          checked={darkMode}
-          onChange={toggleDarkMode}
-          className={`relative inline-flex items-center h-8 rounded-full w-16 transition-colors duration-200 ease-in-out ${darkMode ? 'bg-blue-600' : 'bg-gray-200'}`}
-        >
-          <span className={`block w-6 h-6 rounded-full bg-white shadow-lg transform ring-0 transition ease-in-out duration-200 ${darkMode ? 'translate-x-9' : 'translate-x-1'}`}>
-            {darkMode ? '🌙' : '☀️'}
-          </span>
-        </Switch>
-      </div>
     </div>
   );
 }
