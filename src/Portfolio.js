@@ -202,7 +202,7 @@ export default function Portfolio() {
           <h2 className="text-4xl md:text-6xl font-bold mb-6">Let's Connect</h2>
           <div className="flex space-x-8">
             <motion.a 
-              href="https://linkedin.com/in/yourusername" 
+              href="https://linkedin.com/in/elivnatwiine" 
               target="_blank" 
               rel="noopener noreferrer" 
               whileHover={{ scale: 1.1 }}
@@ -220,7 +220,7 @@ export default function Portfolio() {
               <FaGithub size={40} />
             </motion.a>
             <motion.a 
-              href="mailto:your.email@example.com" 
+              href="mailto:your.elvinatwine1@gmail.com" 
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
             >

@@ -23,6 +23,20 @@ const Resume = ({ darkMode }) => {
               <li>Securing funding and managing investor relationships</li>
             </ul>
           </div>
+
+          <div className="mb-8">
+            <h3 className="text-2xl font-semibold">Student Involvement - Harrisburg Area Community College</h3>
+            <p className="italic text-lg mb-2">October 2023 - July 2024</p>
+            <p className="text-base mb-4">
+              Actively participated in student life and leadership roles, contributing to the campus community:
+            </p>
+            <ul className="list-disc pl-5 mb-4">
+              <li>Served as a member of the Student Government Association, representing student interests</li>
+              <li>Organized and led campus events, enhancing student engagement and fostering a sense of community</li>
+              <li>Collaborated with faculty and staff to improve student services and campus initiatives</li>
+              <li>Developed leadership and communication skills through various workshops and training sessions</li>
+            </ul>
+          </div>
           
           <div className="mb-8">
             <h3 className="text-2xl font-semibold">UX & Product Designer - Kaiya</h3>
@@ -47,20 +61,6 @@ const Resume = ({ darkMode }) => {
               <li>Developed visual content strategies for multiple high-profile clients</li>
               <li>Increased client social media engagement by an average of 45%</li>
               <li>Managed multiple projects simultaneously, ensuring timely delivery</li>
-            </ul>
-          </div>
-
-          <div className="mb-8">
-            <h3 className="text-2xl font-semibold">Student Involvement - Harrisburg Area Community College</h3>
-            <p className="italic text-lg mb-2">August 2020 - May 2021</p>
-            <p className="text-base mb-4">
-              Actively participated in student life and leadership roles, contributing to the campus community:
-            </p>
-            <ul className="list-disc pl-5 mb-4">
-              <li>Served as a member of the Student Government Association, representing student interests</li>
-              <li>Organized and led campus events, enhancing student engagement and fostering a sense of community</li>
-              <li>Collaborated with faculty and staff to improve student services and campus initiatives</li>
-              <li>Developed leadership and communication skills through various workshops and training sessions</li>
             </ul>
           </div>
         </section>
