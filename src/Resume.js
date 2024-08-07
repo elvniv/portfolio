@@ -14,13 +14,13 @@ const Resume = ({ darkMode }) => {
             <h3 className="text-2xl font-semibold">Founder & CEO - Klorah</h3>
             <p className="italic text-lg mb-2">September 2023 - Present</p>
             <p className="text-base mb-4">
-              Leading an innovative startup focused on revolutionizing the freelance industry by bringing traditional job benefits to independent contractors. Key responsibilities include:
+              Leading a startup focused on improving the freelance industry by adding traditional job benefits for independent contractors. At Klorah, I have been key in:
             </p>
             <ul className="list-disc pl-5 mb-4">
-              <li>Developing and implementing the company's strategic vision</li>
-              <li>Overseeing product development and user experience design</li>
-              <li>Building and managing a diverse team of professionals</li>
-              <li>Securing funding and managing investor relationships</li>
+              <li>Crafting and executing the company's strategic vision to disrupt the market</li>
+              <li>Leading the development and coding of core products, ensuring top-notch user experience design</li>
+              <li>Assembling and nurturing a high-performing, diverse team of professionals</li>
+              <li>Securing substantial funding and maintaining robust investor relationships</li>
             </ul>
           </div>
 
@@ -31,7 +31,6 @@ const Resume = ({ darkMode }) => {
               Actively participated in student life and leadership roles, contributing to the campus community:
             </p>
             <ul className="list-disc pl-5 mb-4">
-              <li>Served as a member of the Student Government Association, representing student interests</li>
               <li>Organized and led campus events, enhancing student engagement and fostering a sense of community</li>
               <li>Collaborated with faculty and staff to improve student services and campus initiatives</li>
               <li>Developed leadership and communication skills through various workshops and training sessions</li>
@@ -42,12 +41,10 @@ const Resume = ({ darkMode }) => {
             <h3 className="text-2xl font-semibold">UX & Product Designer - Kaiya</h3>
             <p className="italic text-lg mb-2">November 2021 - April 2022</p>
             <p className="text-base mb-4">
-              Designed user-centric solutions for a remote-first company, focusing on creating intuitive and efficient digital experiences. Achievements include:
+              Worked on user-centric solutions for a community of teens focused on mental health and wellness. Achievements include:
             </p>
             <ul className="list-disc pl-5 mb-4">
-              <li>Redesigned core product features, resulting in a 30% increase in user engagement</li>
-              <li>Conducted user research and usability testing to inform design decisions</li>
-              <li>Collaborated with cross-functional teams to ensure seamless product development</li>
+              <li>Conducted user research to inform design decisions</li>
             </ul>
           </div>
           
@@ -55,12 +52,10 @@ const Resume = ({ darkMode }) => {
             <h3 className="text-2xl font-semibold">Social Media Designer - Day One</h3>
             <p className="italic text-lg mb-2">August 2021 - November 2021</p>
             <p className="text-base mb-4">
-              Created engaging social media content for various clients, enhancing their brand presence and audience engagement. Key accomplishments:
+              Created engaging social media content for our company, enhancing our brand presence and audience engagement. Key accomplishments:
             </p>
             <ul className="list-disc pl-5 mb-4">
-              <li>Developed visual content strategies for multiple high-profile clients</li>
-              <li>Increased client social media engagement by an average of 45%</li>
-              <li>Managed multiple projects simultaneously, ensuring timely delivery</li>
+              <li>Developed visual content strategies for our brand</li>
             </ul>
           </div>
         </section>

@@ -9,11 +9,11 @@ const Education = ({ darkMode }) => {
         <h1 className="text-4xl md:text-6xl font-bold mb-8">Education</h1>
         <div className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">University of Connecticut</h2>
-          <p className="text-xl mb-2">Bachelor's degree in Computer Science</p>
+          <p className="text-xl mb-2">Bachelor's degree in Business Management</p>
           <p className="italic mb-4">Expected graduation: May 2027</p>
           <p>
-            Currently pursuing a degree in Computer Science with a focus on software engineering and user experience design. 
-            Participating in various coding competitions and hackathons to apply classroom knowledge to real-world problems.
+            Currently pursuing a degree in Business Management with a focus on entrepreneurship and digital business strategies. 
+            Engaging in various business case competitions and leadership workshops to apply classroom knowledge to real-world scenarios.
           </p>
         </div>
         <div className="mb-8">
@@ -21,7 +21,7 @@ const Education = ({ darkMode }) => {
           <p className="text-xl mb-2">Associate's degree in General Studies</p>
           <p className="italic mb-4">Completed first year</p>
           <p>
-            Completed foundational courses in mathematics, computer science, and general education. 
+            Completed foundational courses in business, economics, and general education. 
             Participated in the college's entrepreneurship club, laying the groundwork for future business ventures.
           </p>
         </div>
